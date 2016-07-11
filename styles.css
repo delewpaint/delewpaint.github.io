@@ -1,0 +1,165 @@
+/* All Rights Reserved - Solidarity Painting, Inc. */
+
+body {color: #333; background-color: #ccc; background-image:url("images/background.jpg"); margin-top: 0; font-family:verdana,geneva,sans-serif; font-size:.7em; }
+p {line-height: 1.4em; }
+.clr {clear: both; }
+h2 {color: #c20002; background-color: inherit; font-size: 1.5em; margin: 0; padding: 0; }
+h3 {color: #000; background-color: inherit; font-size: 1.2em; margin: 0; padding: 0; }
+h4 {color: #c20002; background-color: inherit; font-size: 1em; margin: 10px 0 0 0; padding: 0; }
+
+#topWrap {width: 996px; margin: 0 auto; color: inherit; background-color: #fff; 
+		  border-top: 0; border-right: 2px solid #FFFFFE; border-bottom: 2px solid #FFFFFE; border-left: 2px solid #FFFFFE;}
+
+/* Page Header with Nav */
+#header { /*height: 84px;*/ }
+#topStroke {border-top: 1px solid #7a7a7a; margin: -2px 0 1px 0; }
+#botStroke {border-top: 1px solid #7a7a7a; margin: 1px 0 -12px 0; }
+#collage {height: 196px; }
+
+#topNav {
+	color: inherit;
+	background-color: #003E6F;
+	padding: 5px 11px;
+	font-weight: bold;
+	font-size: 1.2em;
+	text-align:center;
+}
+#topNav ul {list-style: none; margin: 0; padding: 0; }
+#topNav ul li {display: inline; padding: 0 15px; }
+#topNav li a:link {color: #fff; background-color: inherit; text-decoration: none; }
+#topNav li a:visited {color: #fff; background-color: inherit; text-decoration: none; }
+#topNav li a:hover {color: #F4F705; background-color: inherit; text-decoration: none; }
+#topNav li a:active {color: #F4F705; background-color: inherit; text-decoration: none; }
+
+/* Content Area */
+#columnWrap {background-image: url(images/content_bk.gif); background-repeat: repeat-y; background-position: top right;}
+#leftColumn {float: left; width: 690px; padding: 10px 0 10px 9px; margin-top: 2px; }
+#rightColumn {padding: 16px 8px 5px 13px; margin: 2px 0 0 735px; }
+
+a:link {color: #0C348E; background-color: inherit; }
+a:visited {color: #0C348E; background-color: inherit; }
+a:hover {color: #970718; background-color: inherit; }
+a:active {color: #970718; background-color: inherit; }
+
+.title {color: #c20002; background-color: inherit; font-size: 1.1em; font-weight: bold; margin: 10px 0 0 0; padding: 0; }
+
+#homesiding { background-color: #fff; color: #069; font-weight: bold; float: right; text-align: center; width: 202px; }
+.homethumb { background: inherit; color: #069; font-weight: bold; text-align: center; margin: 5px; }
+
+/* Footer Section */
+#footer {clear: both; margin: 0 auto; width: 1000px; color: #fffffe; background: #191a7d url(images/stroke_top.gif) repeat-x top left; background-color: #003E6F;}
+
+#footer #botNav ul {list-style: none; margin: 0; padding: 10px 11px;  }
+#footer #botNav ul li {display: inline; padding-right: 10px; }
+#footer #botNav li a:link {color: #fff; background-color: inherit; text-decoration: none; }
+#footer #botNav li a:visited {color: #fff; background-color: inherit; text-decoration: none; }
+#footer #botNav li a:hover {color: #F4F705; background-color: inherit; text-decoration: none; }
+#footer #botNav li a:active {color: #F4F705; background-color: inherit; text-decoration: none; }
+
+#copyright {padding: 15px 11px 10px 11px; color: #d2c558; background-color: inherit; }
+#copyright a:link {color: #d2c558; background-color: inherit; text-decoration: none; }
+#copyright a:visited {color: #d2c558; background-color: inherit; text-decoration: none; }
+#copyright a:hover {color: #F4F705; background-color: inherit; text-decoration: none; }
+#copyright a:active {color: #F4F705; background-color: inherit; text-decoration: none; }
+
+
+/* Misc spans and classes */
+ul.home {list-style-image: url(images/bullet.gif); margin: -10px 0 0 0; padding: 0 0 0 30px; line-height: 1.4em; }
+ul.home li.pad {padding-bottom: 10px; }
+ul.allother {list-style-image: url(images/bullet.gif); margin: 0; padding: 0 0 0 30px; line-height: 1.4em; }
+ul.allother li.pad {padding-bottom: 10px; }
+p.quote {margin: 10px auto; width: 80%; color: #191A7D; background-color: inherit;  }
+p.quote2 {margin: 0 auto; width: 80%; text-align: right; }
+hr.right {border: none; color: #000; background-color: #000; height: 1px; width: 80%; }
+
+/* popup windows */
+#popupWrap {margin: 0 auto; width: 520px; padding: 10px 0; color: inherit; background-color: #fff; text-align: center; }
+#popupImg {margin: 0 auto; width: 500px; padding-top: 10px; text-align: center; }
+#popupContent {margin: 0 auto; width: 450px; padding-top: 5px; text-align: left; }
+#popupWrapLg {margin: 0 auto; width: 90%; text-align: center; padding-top: 5px; }
+
+/* Services and Projec Image rollover nav */
+img.thumb {width: 100px; height: 100px; margin-bottom: 10px; }
+a:link img.thumb {border: 1px solid #7A7A7A; }
+a:visited img.thumb {border: 1px solid #7A7A7A; }
+a:hover img.thumb {border: 1px solid red; }
+a:active img.thumb {border: 1px solid red; }
+
+
+/* images */
+img { border: none; }
+img.header {border: 0; width: 996px; /* height: 82px; */}
+img.collage {border: 0; width: 996px; height: 196px; }
+img.brush {border: 0; width: 14px; height: 16px; padding: 0 14px; vertical-align: middle; display:none;}
+img.top {float: right; border: 0; width: 32px; height: 7px; margin: -38px 10px 0 0; }
+img.diamond {float: right; border: 0; width: 58px; height: 59px; padding: 0 0 0 5px; }
+img.bbb { float: right; width: 160px; height: 70px; padding: 0 0 0 5px; }
+img.better {float: right; border: 0; width: 54px; height: 59px; padding: 0 0 0 5px; }
+img.home01 {border: 0; width: 230px; height: 153px; }
+img.homeparked { border:1px solid #7b797e; padding: 1px; margin: 45px 10px 0 0; width: 400px; height: 270px; float: left;
+}
+img.about01 {border: 0; width: 230px; height: 177px; }
+img.more {border: 0; width: 7px; height: 7px; padding: 0 5px 0 0; }
+img.services {float: right; border: 0; width: 175px; height: 166px; padding: 7px 0 5px 10px; }
+img.services2 {float: left; border: 0; width: 175px; height: 166px; padding: 7px 10px 5px 0; }
+img.services3 {float: right; border: 0; width: 204px; height: 177px; padding: 7px 0 5px 10px; }
+img.services4 {float: right; border: 0; padding: 30px 0 20px 10px; }
+img.popHead {border: 0; width: 520px; height: 55px; }
+img.lgHorz {border: 0; width: 500px; height: 335px; }
+img.lgVert {border: 0; width: 335px; height: 440px; padding: 0 0 10px 0; }
+img.popcorn {float: right; border: 0; width: 204px; height: 228px; padding: 7px 0 5px 10px; }
+img.project {border: 0; width: 200px; height: 135px; padding: 8px 5px; }
+img.homethumb, img.homethumb-v { border:1px solid #7b797e; padding: 1px; width: 200px; height: 150px; } 
+img.homethumb-v{ width: 150px; height: 200px; }
+
+/* tables */
+#project {width: 100%; border-collapse: collapse; border: 0; }
+#project td {text-align: center; vertical-align: top; padding: 5px; width: 25%; }
+#contact {width: 460px; border-collapse: collapse; border: 1px solid #191A7D; }
+
+#photos  {width: 100%; border-collapse: collapse; border: 0; background-color: #DADADA; }
+#photos  td {text-align: center; vertical-align: top; padding: 5px; width: 50%; background-color: #fff; }
+
+/* form styles */
+/* Contact Form
+----------------------------------------- */
+#cForm form { margin: 0; padding: 0; }
+#cForm fieldset { padding: 0 0 10px 10px; margin: 0; border: 1px solid #191A7D; }
+#cForm legend { font-weight: bold; font-size: 1.3em; padding-bottom: 8px; color: #191A7D; background-color: inherit; }
+#cForm dt { float: left; width: 30%; text-align: right; padding: 5px 10px 0 0; }
+#cForm label.last { font-weight: bold; text-align: left; padding-left: 10px; }
+#cForm input, textarea, select { margin: 5px 0; border: 1px solid #a7a7a7; font-family: inherit; font-size: 1em; padding: 1px 3px; }
+#cForm input.submit { margin-top: 1em; padding: 3px; color: inherit; background-color: #FDFE9A; }
+.errorMessage { color: red; background-color: inherit; font-weight: bold; font-size: 1.1em; }
+
+
+/* for Litebox anchors that need to remain hidden */
+.invisible {
+	display: none;
+}
+div.homethumb,
+div.homethumb-v {
+	float: left;
+}
+
+div.homethumb-v {
+	margin-top: -45px;
+}
+
+div#refHomeParked {
+	background-color: #eee;
+	float:left;
+	width:265px;
+	padding: 5px;
+}
+table.before-after {
+	margin: 25px auto 0;
+}
+.before-after img {
+	border: 1px solid #666;
+	clear:both;
+}
+.before-after td {
+	vertical-align:top;
+	text-align:center;
+}
