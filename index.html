@@ -1,26 +1,260 @@
-<html xmlns="http://www.w3.org/1999/xhtml"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<style>
+#lightbox{
+	position: absolute;
+	top: 40px;
+	left: 0;
+	width: 100%;
+	z-index: 100;
+	text-align: center;
+	line-height: 0;
+	}
+
+#lightbox a img{ border: none; }
+
+#outerImageContainer{
+	position: relative;
+	background-color: #fff;
+	width: 250px;
+	height: 250px;
+	margin: 0 auto;
+	}
+
+#imageContainer{
+	padding: 10px;
+	}
+
+#loading{
+	position: absolute;
+	top: 40%;
+	left: 0%;
+	height: 25%;
+	width: 100%;
+	text-align: center;
+	line-height: 0;
+	}
+#hoverNav{
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 10;
+	}
+#imageContainer>#hoverNav{ left: 0;}
+#hoverNav a{ outline: none;}
+
+#prevLink, #nextLink{
+	width: 49%;
+	height: 100%;
+	background: transparent url(../images/blank.gif) no-repeat; /* Trick IE into showing hover */
+	display: block;
+	}
+#prevLink { left: 0; float: left;}
+#nextLink { right: 0; float: right;}
+#prevLink:hover, #prevLink:visited:hover { background: url(../images/prevlabel.gif) left 15% no-repeat; }
+#nextLink:hover, #nextLink:visited:hover { background: url(../images/nextlabel.gif) right 15% no-repeat; }
+
+
+#imageDataContainer{
+	font: 10px Verdana, Helvetica, sans-serif;
+	background-color: #fff;
+	margin: 0 auto;
+	line-height: 1.4em;
+	}
+
+#imageData{
+	padding:0 10px;
+	}
+#imageData #imageDetails{ width: 70%; float: left; text-align: left; }	
+#imageData #caption{ font-weight: bold;	}
+#imageData #numberDisplay{ display: block; clear: left; padding-bottom: 1.0em;	}			
+#imageData #bottomNavClose{ width: 66px; float: right;  padding-bottom: 0.7em;	}	
+		
+#overlay{
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 90;
+	width: 100%;
+	height: 500px;
+	background-color: #000;
+	filter:alpha(opacity=60);
+	-moz-opacity: 0.6;
+	opacity: 0.6;
+	}
+	
+
+.clearfix:after {
+	content: "."; 
+	display: block; 
+	height: 0; 
+	clear: both; 
+	visibility: hidden;
+	}
+
+* html>body .clearfix {
+	display: inline-block; 
+	width: 100%;
+	}
+
+* html .clearfix {
+	/* Hides from IE-mac \*/
+	height: 1%;
+	/* End hide from IE-mac */
+	}	
+	
+.header-logo { display: none; }
+
+.list-images { list-style: none; padding: 0; margin: 0; }
+.list-images:after { content: ''; display: table; clear: both; }
+.list-images li { float: left; }
+.list-images li + li { margin-left: 2px; }
+
+.nav-trigger { position: relative; display: none; width: 35px; height: 20px; background-color: #fff !important; }
+.nav-trigger span { position: absolute; display: block; height: 2px; width: 100%; background: #000; transition: top .2s .25s, left .2s .25s, opacity .2s .25s, transform .2s 0s; }
+.nav-trigger span:nth-child(1) { top: 0; }
+.nav-trigger span:nth-child(2) { top: 9px; }
+.nav-trigger span:nth-child(3) { top: 18px; }
+
+.nav-trigger.active span { transition: background .2s, top .2s, left .2s, opacity .2s, transform .2s .25s; }
+    
+.nav-trigger.active span:nth-child(3),
+.nav-trigger.active span:nth-child(1) { top: 9px;  background: red; }
+
+.nav-trigger.active span:nth-child(2) { opacity: 0; }
+.nav-trigger.active span:nth-child(1) { transform: rotate(45deg); }
+.nav-trigger.active span:nth-child(3) { transform: rotate(-45deg); }
+
+/* ------------------------------------------------------------ *\
+	Phones
+\* ------------------------------------------------------------ */
+
+.phones { display: none; }
+
+
+@media(max-width: 1016px){
+	body { margin: 0; }
+	* { box-sizing: border-box; }
+
+	#header,
+	#topWrap a,
+	img.header,
+	#topWrap { max-width: 767px; width: 100% !important; }
+	#footer { max-width: 767px; width: 100% !important; }
+
+	#collage { height: auto; display: none; }
+
+	#columnWrap { background: #f0f0f0; }
+
+	#leftColumn { width: 69%; background: #fff; padding-right: 6px; }
+	#leftColumn iframe { width: 100%; height: auto; min-height: 287px; }
+	#rightColumn { margin: 0; width: 31%; float: left; }
+
+	.list-images li { width: 24.5%; min-height: 166px; background-size: cover; background-position: center center; background-repeat: no-repeat; }
+	.list-images li img { display: none; }
+	.list-images li + li { margin-left: 0.66%; }
+
+	#topNav ul { display: table; width: 100%; }
+	#topNav ul li { padding: 0; display: table-cell; }
+
+	p.quote { width: 100%; padding: 0 20px; }
+
+	div.homethumb, 
+	div.homethumb-v { width: 48%; margin-top: 0; }
+	div.homethumb a, 
+	div.homethumb-v a { display: block; width: 100%; height: auto; }
+	div.homethumb img, 
+	div.homethumb-v img { width: 100%; height: auto; }
+
+	img.homeparked { float: none; width: 100%; height: auto; margin-right: 0; }
+	div#refHomeParked { float: none; width: 100%; }
+}
+
+@media(max-width: 767px){
+	#collage { display: none; }
+	#header { text-align: center; }
+	.header-logo { display: inline-block; margin-bottom: 3px; max-width: 180px; height: auto; }
+	.popHead,
+	.header { display: none; }
+
+	.nav-trigger { display: inline-block; position: absolute; top: 10px; left: 10px; }
+
+	#topNav ul { display: block; width: 100%; padding: 10px 0 15px; display: none; }
+	#topNav ul li { display: block; width: 100%; float: none; text-align: left; }
+	#topNav ul li + li { margin-top: 10px; }
+
+	.list-images li { width: 48%; margin: 1%; }
+	.list-images li + li { margin-left: 1%; }
+
+	#rightColumn,
+	#leftColumn { float: none; width: 100%; max-width: 100%; }
+	#rightColumn a { max-width: 100%; }
+	#rightColumn a img { max-width: 100%; height: auto; }
+
+	#footer #botNav ul li { display: block; padding: 0; }
+	#footer #botNav ul li + li { margin-top: 5px; }
+	#footer #botNav ul li:nth-child(even) { display: none; }
+
+	#lightbox * { box-sizing: border-box; }
+	#lightbox img,
+	#lightbox #hoverNav,
+	#lightbox #outerImageContainer { width: 100% !important; }
+
+	#cForm dt { float: none; width: 100%; text-align: left; margin-bottom: 15px; }
+
+	img.popHead,
+	#popupImg,
+	#popupContent,
+	#popupWrap { max-width: 100%; width: 100%; }
+	#popupImg img { max-width: 100%; height: auto; }
+	#popupContent { padding: 10px 10px; }
+	img.popHead { width: auto; height: auto; }
+
+	.phones { display: block; max-width: 320px; margin: 0 auto; padding: 10px 0;  }
+	.phones strong { display: block;  color: #c20002; font-size: 12px; font-weight: 700; padding-bottom: 5px; text-transform: uppercase; }
+	.phones span { color: #333; font-weight: 700; font-size: 11px; }
+	#topWrap .phones a { display: inline-block; width: 45% !important; text-decoration: none; }
+	#topWrap .phones a:hover { text-decoration: underline; }
+}
+
+@media(max-width: 480px){
+	.list-images li { width: 100%; margin: 0 0 15px; min-height: 0; background: none; }
+	.list-images li img { display: block; width: 100%; height: auto; }
+	.list-images li + li { margin-left: 0; }
+
+	#leftColumn iframe { min-height: 170px; }
+
+	div.homethumb, 
+	div.homethumb-v { margin: 0; width: 100%; }
+	div.homethumb img,
+	div.homethumb-v img { width: 100%; height: auto; margin: 0; }
+}
+</style>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script><script type="text/javascript">var NREUMQ=NREUMQ||[];NREUMQ.push(["mark","firstbyte",new Date().getTime()]);</script><title>Residential and Commercial Painting, Restoration, Waterproofing by Delew Painting
-</title>
-<meta http-equiv="Content-Language" content="en-us">
-<meta name="description" content="Residential and Commercial Painting, Restoration, Waterproofing by Delew Painting serving Northern California">
-<meta name="keywords" content="delew painting, santa rosa, sonoma, painting contractor, painting, paint, painters, contractors, house painting, interior, exterior">
-<meta name="robots" content="index,follow">
-<meta name="googlebot" content="index,follow">
-<link href="styles.css" rel="stylesheet" type="text/css" media="all">
-<link rel="stylesheet" type="text/css" href="css/lightbox.css" media="screen">
+<script type="text/javascript">var NREUMQ=NREUMQ||[];NREUMQ.push(["mark","firstbyte",new Date().getTime()]);</script><title>Residential and Commercial Painting, Restoration by Delew Painting</title>
+<meta http-equiv="Content-Language" content="en-us" />
+<meta name="description" content="Residential and Commercial Painting, Restoration, Waterproofing by Delew Painting serving Northern California" />
+<meta name="keywords" content="Delew painting, santa rosa, sonoma, painting contractor, painting, paint, painters, contractors, house painting, interior, exterior" />
+<meta name="robots" content="index,follow" />
+<meta name="googlebot" content="index,follow" />
+<link href="http://www.solidarityinc.com/styles.css" rel="stylesheet" type="text/css" media="all" />
+<link rel="stylesheet" type="text/css" href="http://www.solidarityinc.com/css/lightbox.css" media="screen" />
 <script src="js/jquery-1.11.3.min.js" type="text/javascript"></script>
 
-<script type="text/javascript" src="js/prototype.lite.js"></script>
-<script type="text/javascript" src="js/moo.fx.js"></script>
-<script type="text/javascript" src="js/litebox-1.0.js"></script>
-<script type="text/javascript" src="js/g-analytics.js"></script>
+<script type="text/javascript" src="http://www.solidarityinc.com/js/prototype.lite.js"></script>
+<script type="text/javascript" src="http://www.solidarityinc.com/js/moo.fx.js"></script>
+<script type="text/javascript" src="http://www.solidarityinc.com/js/litebox-1.0.js"></script>
+<script type="text/javascript" src="http://www.solidarityinc.com/js/g-analytics.js"></script>
 
-<link rel="stylesheet" href="css/style-responsive.css" type="text/css" media="all">
-<script src="js/functions-responsive.js" type="text/javascript"></script>
+<link rel="stylesheet" href="http://www.solidarityinc.com/css/style-responsive.css" type="text/css" media="all" />
+<script src="http://www.solidarityinc.com/js/functions-responsive.js" type="text/javascript"></script>
 
 </head>
 <body onload="initLightbox()">
@@ -28,36 +262,19 @@
   <div id="header">
 
     <a name="top">
-    <img class="header" src="http://i.imgur.com/Sxfygrq.png" alt="Delew Painting Inc.">
-    <img class="header-logo" src="http://www.solidarityinc.com/images/header-logo.jpg" alt="Solidarity Painting Inc.">
-  </a>
+    <img class="header" src="http://i.imgur.com/Sxfygrq.png" alt="Delew Painting Inc." /></a>
   
-  <div class="phones">
-    <div class="phone">
-      <a href="tel:707-544-9551">
-        <strong>Sonoma</strong>
-        
-        <span>707-544-9551</span>
-      </a>
-      
-      <a href="tel:415-450-8075">
-        <strong>Marin</strong>
-        
-        <span>415-450-8075</span>
-      </a>
-    </div><!-- /.phone -->
-  </div><!-- /.phones -->
+  
 </div>
   <div id="topStroke">
   </div>
-  <div id="topNav">
-          </div>
+  
   <div id="botStroke">&nbsp;</div>
   <div id="collage">
-    <img class="collage" src="images/collage_01.jpg" alt="Solidarity Painting Inc."></div>
+    <img class="collage" src="http://www.solidarityinc.com/images/collage_01.jpg" alt="Delew Painting Inc." /></div>
   <div id="columnWrap">
     <div id="leftColumn">
-      <h2>Painting, Restoration, Waterproofing</h2>
+      <h2>Painting and Restoration</h2>
 <p>
   When it comes to painting and restoration work, it pays to go with proven 
   quality. Everyone claims to be the best; Delew Painting has built a solid 
@@ -74,75 +291,77 @@
 	  in all of our customers, from the moment we meet, until the day we complete the
 	  project.
 	  </p>
-	  
-      <p><span class="title">Problems &amp; Solutions</span><br>
+	  <h3>Why Choose Delew</h3>
+      <p><span class="title">Problems &amp; Solutions</span><br />
 		The following slideshows illustrate problems and how we solve them:</p>
       <div class="homethumb">
-        <a href="images/slideshow/pbms-01.jpg" rel="lightbox[problems]" title="Cracked siding is sign of trouble">
-        <img src="http://www.solidarityinc.com/images/slideshow/pbms-tmb.jpg" class="homethumb" alt="Exterior Problems" title="Exterior Problems">
+        <a href="http://www.solidarityinc.com/images/slideshow/pbms-01.jpg" rel="lightbox[problems]" title="Cracked siding is sign of trouble">
+        <img src="http://www.solidarityinc.com/images/slideshow/pbms-tmb.jpg" class="homethumb" 
+        	alt="Exterior Problems" title="Exterior Problems" />
    	  <p>Exterior Problems</p></a></div>
       <div class="homethumb">
-      	<a href="images/slideshow/sols-01.jpg" rel="lightbox[solutions]">
-      	<img src="http://www.solidarityinc.com/images/slideshow/sols-tmb.jpg" class="homethumb" alt="Exterior Solutions" title="Exterior Solutions">
+      	<a href="http://www.solidarityinc.com/images/slideshow/sols-01.jpg" rel="lightbox[solutions]">
+      	<img src="http://www.solidarityinc.com/images/slideshow/sols-tmb.jpg" class="homethumb" alt="Exterior Solutions"
+      		title="Exterior Solutions" />
    	  	<p>Exterior Solutions</p></a></div>
       <div class="homethumb homethumb-v">
-      	<a href="images/slideshow/int-01.jpg" rel="lightbox[interiors]">
-      	<img src="http://www.solidarityinc.com/images/slideshow/int-tmb.jpg" alt="Interiors" class="homethumb homethumb-v" title="Interiors">
+      	<a href="http://www.solidarityinc.com/images/slideshow/int-01.jpg" rel="lightbox[interiors]">
+      	<img src="http://www.solidarityinc.com/images/slideshow/int-tmb.jpg" alt="Interiors" class="homethumb homethumb-v"
+      		title="Interiors" />
   	  	<p>Interiors</p></a></div>
-   	  <p style="clear:left">For more information, see <a href="services.php">Services</a>.</p>
-      <div class="invisible">
+   	  <div class="invisible">
         <!-- Problems -->
-        <a href="images/slideshow/pbms-02.jpg" rel="lightbox[problems]" title="Bottom of siding is dry-rotted">2</a>
-        <a href="images/slideshow/pbms-03.jpg" rel="lightbox[problems]" title="Dry-rot in many areas of siding, house painted only 3 years ago">3</a>
-        <a href="images/slideshow/pbms-04.jpg" rel="lightbox[problems]" title="Dry-rot has spread behind siding into framing studs; there was no moisture paper barrier behind this siding">4</a>
-        <a href="images/slideshow/pbms-05.jpg" rel="lightbox[problems]" title="Dry-rot destroyed trim and siding, but paper barrier stopped from contaminating the framing studs">5</a>
-        <a href="images/slideshow/pbms-06.jpg" rel="lightbox[problems]" title="Dry-rot in window trim - previous painters applied caulking and painted over the dry-rit">6</a>
-        <a href="images/slideshow/pbms-07.jpg" rel="lightbox[problems]" title="Again, damaged siding and main beams &amp; studs started to dry-rot; without moisture paper barrier the insulation was getting wet and sheetrock on the inside developed mold">7</a>
-        <a href="images/slideshow/pbms-08.jpg" rel="lightbox[problems]" title="Bottom of supporting post is dry-rotted, this house was only 12 years old">8</a>
-        <a href="images/slideshow/pbms-09.jpg" rel="lightbox[problems]" title="Dry-rot in trim and fiberboard siding - broken paper behind was letting moisture inside the walls">9</a>
-        <a href="images/slideshow/pbms-10.jpg" rel="lightbox[problems]" title="Dry-rot in top of window trim and siding">10</a>
-        <a href="images/slideshow/pbms-11.jpg" rel="lightbox[problems]" title="From the bottom you can't see, but all the top of beams where never painted - see next photo; this house is only 9 months old">11</a>
-        <a href="images/slideshow/pbms-12.jpg" rel="lightbox[problems]" title="Because top of beams are not properly sealed and painted, it will lead to dry-rot 10 years later">12</a>
-        <a href="images/slideshow/pbms-13.jpg" rel="lightbox[problems]" title="Greenwood used on trim - 9 months later it's cracking and splitting">13</a>
-        <a href="images/slideshow/pbms-14.jpg" rel="lightbox[problems]" title="Damaged beam beyond repair - costly repairs that could have been easily prevented; the truth is that most contractors just want to get paid and move on to the next job; at Solidarity we solve the problem and not pass it on to someone else">14</a>
-        <a href="images/slideshow/pbms-15.jpg" rel="lightbox[problems]" title="Notice how top of windows was never painted - and 'garden' developed; this is on a beautiful 7 year old custom victorian home">15</a>
-        <a href="images/slideshow/pbms-16.jpg" rel="lightbox[problems]" title="Defective siding removed">16</a>
-        <a href="images/slideshow/pbms-17.jpg" rel="lightbox[problems]" title="Moisture paper barrier is installed">17</a>
-        <a href="images/slideshow/pbms-18.jpg" rel="lightbox[problems]" title="Properly sealed and painted wall">18</a>
-        <a href="images/slideshow/pbms-19.jpg" rel="lightbox[problems]" title="Mold growth on the inside of fiber board siding that started to dry-rot">19</a>
-        <a href="images/slideshow/pbms-20.jpg" rel="lightbox[problems]" title="Example of caulking and sealing">20</a>
-        <a href="images/slideshow/pbms-21.jpg" rel="lightbox[problems]" title="Example of caulking and sealing">21</a>
-        <a href="images/slideshow/pbms-22.jpg" rel="lightbox[problems]" title="Propoerly sealed, caulked and painted siding and trim">22</a>
+        <a href="http://www.solidarityinc.com/images/slideshow/pbms-02.jpg" rel="lightbox[problems]" title="Bottom of siding is dry-rotted">2</a>
+        <a href="http://www.solidarityinc.com/images/slideshow/pbms-03.jpg" rel="lightbox[problems]" title="Dry-rot in many areas of siding, house painted only 3 years ago">3</a>
+        <a href="http://www.solidarityinc.com/images/slideshow/pbms-04.jpg" rel="lightbox[problems]" title="Dry-rot has spread behind siding into framing studs; there was no moisture paper barrier behind this siding">4</a>
+        <a href="http://www.solidarityinc.com/images/slideshow/pbms-05.jpg" rel="lightbox[problems]" title="Dry-rot destroyed trim and siding, but paper barrier stopped from contaminating the framing studs">5</a>
+        <a href="http://www.solidarityinc.com/images/slideshow/pbms-06.jpg" rel="lightbox[problems]" title="Dry-rot in window trim - previous painters applied caulking and painted over the dry-rit">6</a>
+        <a href="http://www.solidarityinc.com/images/slideshow/pbms-07.jpg" rel="lightbox[problems]" title="Again, damaged siding and main beams & studs started to dry-rot; without moisture paper barrier the insulation was getting wet and sheetrock on the inside developed mold">7</a>
+        <a href="http://www.solidarityinc.com/images/slideshow/pbms-08.jpg" rel="lightbox[problems]" title="Bottom of supporting post is dry-rotted, this house was only 12 years old">8</a>
+        <a href="http://www.solidarityinc.com/images/slideshow/pbms-09.jpg" rel="lightbox[problems]" title="Dry-rot in trim and fiberboard siding - broken paper behind was letting moisture inside the walls">9</a>
+        <a href="http://www.solidarityinc.com/images/slideshow/pbms-10.jpg" rel="lightbox[problems]" title="Dry-rot in top of window trim and siding">10</a>
+        <a href="http://www.solidarityinc.com/images/slideshow/pbms-11.jpg" rel="lightbox[problems]" title="From the bottom you can't see, but all the top of beams where never painted - see next photo; this house is only 9 months old">11</a>
+        <a href="http://www.solidarityinc.com/images/slideshow/pbms-12.jpg" rel="lightbox[problems]" title="Because top of beams are not properly sealed and painted, it will lead to dry-rot 10 years later">12</a>
+        <a href="http://www.solidarityinc.com/images/slideshow/pbms-13.jpg" rel="lightbox[problems]" title="Greenwood used on trim - 9 months later it's cracking and splitting">13</a>
+        <a href="http://www.solidarityinc.com/images/slideshow/pbms-14.jpg" rel="lightbox[problems]" title="Damaged beam beyond repair - costly repairs that could have been easily prevented; the truth is that most contractors just want to get paid and move on to the next job; at Delew we solve the problem and not pass it on to someone else">14</a>
+        <a href="http://www.solidarityinc.com/images/slideshow/pbms-15.jpg" rel="lightbox[problems]" title="Notice how top of windows was never painted - and 'garden' developed; this is on a beautiful 7 year old custom victorian home">15</a>
+        <a href="http://www.solidarityinc.com/images/slideshow/pbms-16.jpg" rel="lightbox[problems]" title="Defective siding removed">16</a>
+        <a href="http://www.solidarityinc.com/images/slideshow/pbms-17.jpg" rel="lightbox[problems]" title="Moisture paper barrier is installed">17</a>
+        <a href="http://www.solidarityinc.com/images/slideshow/pbms-18.jpg" rel="lightbox[problems]" title="Properly sealed and painted wall">18</a>
+        <a href="http://www.solidarityinc.com/images/slideshow/pbms-19.jpg" rel="lightbox[problems]" title="Mold growth on the inside of fiber board siding that started to dry-rot">19</a>
+        <a href="http://www.solidarityinc.com/images/slideshow/pbms-20.jpg" rel="lightbox[problems]" title="Example of caulking and sealing">20</a>
+        <a href="http://www.solidarityinc.com/images/slideshow/pbms-21.jpg" rel="lightbox[problems]" title="Example of caulking and sealing">21</a>
+        <a href="http://www.solidarityinc.com/images/slideshow/pbms-22.jpg" rel="lightbox[problems]" title="Propoerly sealed, caulked and painted siding and trim">22</a>
         <!-- Solutions -->
-        <a href="images/slideshow/sols-02.jpg" rel="lightbox[solutions]" title="">2</a>
-        <a href="images/slideshow/sols-03.jpg" rel="lightbox[solutions]" title="">3</a>
-        <a href="images/slideshow/sols-04.jpg" rel="lightbox[solutions]" title="">4</a>
-        <a href="images/slideshow/sols-05.jpg" rel="lightbox[solutions]" title="">5</a>
-        <a href="images/slideshow/sols-06.jpg" rel="lightbox[solutions]" title="">6</a>
-        <a href="images/slideshow/sols-07.jpg" rel="lightbox[solutions]" title="">7</a>
-        <a href="images/slideshow/sols-08.jpg" rel="lightbox[solutions]" title="">8</a>
-        <a href="images/slideshow/sols-09.jpg" rel="lightbox[solutions]" title="">9</a>
-        <a href="images/slideshow/sols-10.jpg" rel="lightbox[solutions]" title="">10</a>
+        <a href="http://www.solidarityinc.com/images/slideshow/sols-02.jpg" rel="lightbox[solutions]" title="">2</a>
+        <a href="http://www.solidarityinc.com/images/slideshow/sols-03.jpg" rel="lightbox[solutions]" title="">3</a>
+        <a href="http://www.solidarityinc.com/images/slideshow/sols-04.jpg" rel="lightbox[solutions]" title="">4</a>
+        <a href="http://www.solidarityinc.com/images/slideshow/sols-05.jpg" rel="lightbox[solutions]" title="">5</a>
+        <a href="http://www.solidarityinc.com/images/slideshow/sols-06.jpg" rel="lightbox[solutions]" title="">6</a>
+        <a href="http://www.solidarityinc.com/images/slideshow/sols-07.jpg" rel="lightbox[solutions]" title="">7</a>
+        <a href="http://www.solidarityinc.com/images/slideshow/sols-08.jpg" rel="lightbox[solutions]" title="">8</a>
+        <a href="http://www.solidarityinc.com/images/slideshow/sols-09.jpg" rel="lightbox[solutions]" title="">9</a>
+        <a href="http://www.solidarityinc.com/images/slideshow/sols-10.jpg" rel="lightbox[solutions]" title="">10</a>
         <!-- Interior -->
-        <a href="images/slideshow/int-02.jpg" rel="lightbox[interiors]" title="">2</a>
-        <a href="images/slideshow/int-03.jpg" rel="lightbox[interiors]" title="">3</a>
-        <a href="images/slideshow/int-04.jpg" rel="lightbox[interiors]" title="">4</a>
-        <a href="images/slideshow/int-05.jpg" rel="lightbox[interiors]" title="">5</a>
-        <a href="images/slideshow/int-06.jpg" rel="lightbox[interiors]" title="">6</a>
-        <a href="images/slideshow/int-07.jpg" rel="lightbox[interiors]" title="">7</a>
-        <a href="images/slideshow/int-08.jpg" rel="lightbox[interiors]" title="">8</a>
-        <a href="images/slideshow/int-09.jpg" rel="lightbox[interiors]" title="">9</a>
-        <a href="images/slideshow/int-10.jpg" rel="lightbox[interiors]" title="">10</a>
-        <a href="images/slideshow/int-11.jpg" rel="lightbox[interiors]" title="">11</a>
-        <a href="images/slideshow/int-12.jpg" rel="lightbox[interiors]" title="">12</a>
-        <a href="images/slideshow/int-13.jpg" rel="lightbox[interiors]" title="">13</a>
-        <a href="images/slideshow/int-14.jpg" rel="lightbox[interiors]" title="">14</a>
-        <a href="images/slideshow/int-15.jpg" rel="lightbox[interiors]" title="">15</a>
+        <a href="http://www.solidarityinc.com/images/slideshow/int-02.jpg" rel="lightbox[interiors]" title="">2</a>
+        <a href="http://www.solidarityinc.com/images/slideshow/int-03.jpg" rel="lightbox[interiors]" title="">3</a>
+        <a href="http://www.solidarityinc.com/images/slideshow/int-04.jpg" rel="lightbox[interiors]" title="">4</a>
+        <a href="http://www.solidarityinc.com/images/slideshow/int-05.jpg" rel="lightbox[interiors]" title="">5</a>
+        <a href="http://www.solidarityinc.com/images/slideshow/int-06.jpg" rel="lightbox[interiors]" title="">6</a>
+        <a href="http://www.solidarityinc.com/images/slideshow/int-07.jpg" rel="lightbox[interiors]" title="">7</a>
+        <a href="http://www.solidarityinc.com/images/slideshow/int-08.jpg" rel="lightbox[interiors]" title="">8</a>
+        <a href="http://www.solidarityinc.com/images/slideshow/int-09.jpg" rel="lightbox[interiors]" title="">9</a>
+        <a href="http://www.solidarityinc.com/images/slideshow/int-10.jpg" rel="lightbox[interiors]" title="">10</a>
+        <a href="http://www.solidarityinc.com/images/slideshow/int-11.jpg" rel="lightbox[interiors]" title="">11</a>
+        <a href="http://www.solidarityinc.com/images/slideshow/int-12.jpg" rel="lightbox[interiors]" title="">12</a>
+        <a href="http://www.solidarityinc.com/images/slideshow/int-13.jpg" rel="lightbox[interiors]" title="">13</a>
+        <a href="http://www.solidarityinc.com/images/slideshow/int-14.jpg" rel="lightbox[interiors]" title="">14</a>
+        <a href="http://www.solidarityinc.com/images/slideshow/int-15.jpg" rel="lightbox[interiors]" title="">15</a>
       </div>
 
 	  <p>
-	  <span class="title">Experience</span><br>
-	  Delew Painting has successfully restored, waterproofed and 
+	  <span class="title">Experience</span><br />
+	  Delew Painting has successfully restored and 
       painted over 2000 homes and buildings in the past two decades. Our solid reputation 
       for quality and continuing success reflect our philosophy. We believe that 
       every job done well is the most effective advertising possible. We are a service 
@@ -150,7 +369,7 @@
 	  </p>
 	  
 	  <p>
-	  <span class="title">Competitive Pricing</span><br>
+	  <span class="title">Competitive Pricing</span><br />
 	  People are amazed that Delew Painting can offer such quality work at such
 	  competitive prices. How do we do it? We do it by organizing each job for maximum
 	  efficiency, by training each man to perform his tasks in the right order, and by
@@ -160,7 +379,7 @@
 	  </p>
 	  
 	  <p>
-	  <span class="title">Neatness and Efficiency</span><br>
+	  <span class="title">Neatness and Efficiency</span><br />
 	  In the painting business, neatness counts a lot. Our foremen carry a full complement
 	  of tarps, plastic sheeting, taping machines and other material and devices that may be 
 	  required. This insures that paint goes where it's supposed to go. Driveways, walkways,
@@ -169,15 +388,14 @@
 	  
 
 	  <p>
-	  <span class="title">Quality Products</span><br>
+	  <span class="title">Quality Products</span><br />
 	  Thorough surface preparation and top quality paints help insure a lasting job. We only
-	  use premimum Dunn Edwards, Kelly-Moore and Benjamin Moore top line finishes as well as
-	  Elastomeric waterproof coatings. Our volume discounts allow us to provide these products
+	  use premimum Dunn Edwards, Kelly-Moore and Benjamin Moore top line finishes. Our volume discounts allow us to provide these products
 	  at an affordable price.
 	  </p>
 	  
 	  <p>
-	  <span class="title">Dependability</span><br>
+	  <span class="title">Dependability</span><br />
 	  For over twenty years, we have been serving The North Bay and beyond. Every job is
 	  guaranteed in writing and, more importantly, we will be around to back it up. Our
 	  guarantees are not loaded with disclaimers that render it worthless. All problems which
@@ -185,75 +403,45 @@
 	  asset!
 	  </p>
 	  
-	  <p>
-	  <span class="title">Licensed, Bonded &amp; Insured</span><br>
-	  We have all required insurances (workers compensation, contractors bond, general liability 
-	  for $2 million). We have been with the same insurance companies for over 10 years.
-	  </p>
-      
-      
-      <p>Want to know how to avoid, treat and prevent dry rot? Watch video below. See Diamond Certified Expert Greg Kuzmicki's full Expert Contribution at <a href="http://experts.diamondcertified.org/greg-kuzmicki-solidarity-painting-inc/" target="_blank">Diamond Certified</a>.</p>
-      
-      <p>&nbsp;</p>
 	  
-      <img class="homeparked" src="images/home_parked.jpg" alt="Solidarity Painting in Santa Rosa, CA">
+      
+      <img src="http://i.imgur.com/wZLU0ch.png" alt="Delew Painting in Santa Rosa, CA" />
       <div id="refHomeParked">
-	  <strong>June 23, 2009</strong>      
-	  <p>Thank you for completing on time and on a budget the interior and exterior
-	    painting of our new house in Napa. It is now the pride of the neighborhood,
-	    aside from ours. You and your crew were fastidious in your attention
-	    to detail and did a fantastic prep and paint job with the complicated multicolor
-	    scheme of our designer.</p>
-<p>Owing to the size of our house (over 4,000 square feet), we had many bids
-  for this job but you convinced us you could do better than anyone else and
-  you certainly delivered beyond our expectations. We have had many homes
-  painted and repainted over the years but hiring you was the best decision
-  we ever made. You can count on our keeping your number when we will have
-  another job.</p>
-	  <p>Feel free to use our name as a reference in the future.</p>
-      <p>With sincere appreciation,<br>
-	    Grace Chen, Napa CA</p></div>
+	  </div>
 	  
       <!-- div id="homesiding">
-	  <a href="images/siding/1.jpg" rel="lightbox[siding]">
-	  <img src="http://www.solidarityinc.com/images/siding_home.jpg" class="homethumb" alt="Siding Homes - Problems and Solutions"
+	  <a href="http://www.solidarityinc.com/images/siding/1.jpg" rel="lightbox[siding]">
+	  <img src="http://www.Delewinc.com/"images/siding_home.jpg" class="homethumb" alt="Siding Homes - Problems and Solutions"
 	  title="Siding Homes - Problems and Solutions" /></a><br />
-	  <a href="images/siding/1.jpg" rel="lightbox[siding]"><strong>Siding Homes - Problems and Solutions</strong></a><br />
-	  <a href="images/siding/1.jpg" rel="lightbox[siding]">1</a>
-	  <a href="images/siding/2.jpg" rel="lightbox[siding]">2</a>
-	  <a href="images/siding/3.jpg" rel="lightbox[siding]">3</a>
-	  <a href="images/siding/4.jpg" rel="lightbox[siding]">4</a>
-	  <a href="images/siding/5.jpg" rel="lightbox[siding]">5</a>
-	  <a href="images/siding/6.jpg" rel="lightbox[siding]">6</a>
-	  <a href="images/siding/7.jpg" rel="lightbox[siding]">7</a>
-	  <a href="images/siding/8.jpg" rel="lightbox[siding]">8</a>
-	  <a href="images/siding/9.jpg" rel="lightbox[siding]">9</a>
-	  <a href="images/siding/10.jpg" rel="lightbox[siding]">10</a>
-	  <a href="images/siding/11.jpg" rel="lightbox[siding]">11</a>
-	  <a href="images/siding/12.jpg" rel="lightbox[siding]">12</a>
-	  <a href="images/siding/13.jpg" rel="lightbox[siding]">13</a>
-	  <a href="images/siding/14.jpg" rel="lightbox[siding]">14</a>
-	  <a href="images/siding/15.jpg" rel="lightbox[siding]">15</a>
-	  <a href="images/siding/16.jpg" rel="lightbox[siding]">16</a>
-	  <a href="images/siding/17.jpg" rel="lightbox[siding]">17</a>
-	  <a href="images/siding/18.jpg" rel="lightbox[siding]">18</a>
-	  <a href="images/siding/19.jpg" rel="lightbox[siding]">19</a>
-	  <a href="images/siding/20.jpg" rel="lightbox[siding]">20</a>
-	  <a href="images/siding/21.jpg" rel="lightbox[siding]">21</a>
-	  <a href="images/siding/22.jpg" rel="lightbox[siding]">22</a>
-	  <a href="images/siding/23.jpg" rel="lightbox[siding]">23</a>
-	  <a href="images/siding/24.jpg" rel="lightbox[siding]">24</a>
-	  <a href="images/siding/25.jpg" rel="lightbox[siding]">25</a><br />
-	  <a href="services_dryrot_repair.php">Also see Dry-rot, siding and trim repairs</a>
+	  <a href="http://www.solidarityinc.com/images/siding/1.jpg" rel="lightbox[siding]"><strong>Siding Homes - Problems and Solutions</strong></a><br />
+	  <a href="http://www.solidarityinc.com/images/siding/1.jpg" rel="lightbox[siding]">1</a>
+	  <a href="http://www.solidarityinc.com/images/siding/2.jpg" rel="lightbox[siding]">2</a>
+	  <a href="http://www.solidarityinc.com/images/siding/3.jpg" rel="lightbox[siding]">3</a>
+	  <a href="http://www.solidarityinc.com/images/siding/4.jpg" rel="lightbox[siding]">4</a>
+	  <a href="http://www.solidarityinc.com/images/siding/5.jpg" rel="lightbox[siding]">5</a>
+	  <a href="http://www.solidarityinc.com/images/siding/6.jpg" rel="lightbox[siding]">6</a>
+	  <a href="http://www.solidarityinc.com/images/siding/7.jpg" rel="lightbox[siding]">7</a>
+	  <a href="http://www.solidarityinc.com/images/siding/8.jpg" rel="lightbox[siding]">8</a>
+	  <a href="http://www.solidarityinc.com/images/siding/9.jpg" rel="lightbox[siding]">9</a>
+	  <a href="http://www.solidarityinc.com/images/siding/10.jpg" rel="lightbox[siding]">10</a>
+	  <a href="http://www.solidarityinc.com/images/siding/11.jpg" rel="lightbox[siding]">11</a>
+	  <a href="http://www.solidarityinc.com/images/siding/12.jpg" rel="lightbox[siding]">12</a>
+	  <a href="http://www.solidarityinc.com/images/siding/13.jpg" rel="lightbox[siding]">13</a>
+	  <a href="http://www.solidarityinc.com/images/siding/14.jpg" rel="lightbox[siding]">14</a>
+	  <a href="http://www.solidarityinc.com/images/siding/15.jpg" rel="lightbox[siding]">15</a>
+	  <a href="http://www.solidarityinc.com/images/siding/16.jpg" rel="lightbox[siding]">16</a>
+	  <a href="http://www.solidarityinc.com/images/siding/17.jpg" rel="lightbox[siding]">17</a>
+	  <a href="http://www.solidarityinc.com/images/siding/18.jpg" rel="lightbox[siding]">18</a>
+	  <a href="http://www.solidarityinc.com/images/siding/19.jpg" rel="lightbox[siding]">19</a>
+	  <a href="http://www.solidarityinc.com/images/siding/20.jpg" rel="lightbox[siding]">20</a>
+	  <a href="http://www.solidarityinc.com/images/siding/21.jpg" rel="lightbox[siding]">21</a>
+	  <a href="http://www.solidarityinc.com/images/siding/22.jpg" rel="lightbox[siding]">22</a>
+	  <a href="http://www.solidarityinc.com/images/siding/23.jpg" rel="lightbox[siding]">23</a>
+	  <a href="http://www.solidarityinc.com/images/siding/24.jpg" rel="lightbox[siding]">24</a>
+	  <a href="http://www.solidarityinc.com/images/siding/25.jpg" rel="lightbox[siding]">25</a><br />
+	  <a href="http://www.solidarityinc.com/services_dryrot_repair.php">Also see Dry-rot, siding and trim repairs</a>
 	  </div --><!-- end #homesiding -->
 	  
-	  <p></p>
-      <p>
-	  Highest rated Local Painting Contractors in the North Bay. Check us out with 
-	  <a href="http://goldengate.app.bbb.org/check/53317" onclick="window.open(this.href); return false;">BBB</a>
-	  and <a href="http://www.diamondcertified.org/report/solidarity-painting-inc" target="_new" onclick="window.open(this.href); return false;">
-	  Diamond Certified</a>.
-	  </p>
 	  
 	  
 
@@ -261,83 +449,42 @@
 	  
     </div>
     <div id="rightColumn">
-      <p>
-      <a target="_blank" href="http://www.diamondcertified.org/report/solidarity-painting-inc">
-      <img class="diamond" src="images/diamond_certified.gif" alt="Solidarity Painting is Diamond Certified"></a>It 
-      is important to look beneath the surface of any company you hire to perform 
+      <b>Delew Equals Stability</b>
+	  <p>It is important to look beneath the surface of any company you hire to perform 
       a painting or restoration project. Are they knowledgeable and stable? Or do 
       they resemble the damaged stucco wall you are hiring them to repair? Delew 
-      Painting is very proud of our projects, our clients and our business success.</p>
-      <p align="center">
-	  <a href="http://goldengate.app.bbb.org/check/53317" onclick="window.open(this.href); return false;">
-	  <img src="http://goldengate.app.bbb.org/check/checkimage.php?bid=53317" alt="Solidarity Painting belongs to the Better Business Bureau"></a><br>
-	  <strong style="color: #b90000;">Better Business Bureau</strong>
-	  </p>
-	  <p>
+      Painting is very proud of our projects, our clients and our business success.
 	  We have company owned equipment to complete any size job, including high work 
       and difficult access homes from heavy exterior coatings to fine interior finishes.</p>
 
-	  <hr>
-      
-      
-      <hr>
-	  <h4>What our customers say about us</h4>
-	  <p>
-	  <strong>September 25, 2009</strong>
-	  </p>
-	  <p>
-	  I highly recommend Delew Painting for an outstanding paint job on
-	    the exterior of our Fountain Grove home during September 2008. The prep
-	    job was outstanding. The whole project moved forward in a very smooth,
-	    efficient manner. The Delew team went far beyond the call of duty to
-	    deliver an excellent paint job. The detailed work was amazing.</p>
-	  <p>
-	  We have also had very good experiences with Delew Painting in the
-	    past. Delew Painting painted the interior of our home about five
-	    years ago, again with a beautiful outcome. Previous to that, Greg also painted
-	    both the interior and exterior of our first home in Larkfield. On every
-	    occasion, he has given his best efforts to fully satisfy our sometimes
-	    particular and fussy needs, and has delivered beyond our expectations with
-	    enthusiasm, conscientious work ethic, high-integrity, and high value.</p>
-	  <p>
-	  It has truly been a pleasure working with Delew Painting on all of
-	    our painting experience. Greg and his team at Delew Painting have my
-      highest recommendation for excellence in painting. </p>
-	  <p>
-	  Sincerely,
-	    <br>
-      Roger A. Klein, M.D., M.S. </p>
+      <hr />
+	  
 	  
 	  <!-- p class="homethumb">
-	  <a href="images/stucco/1.jpg" rel="lightbox[stucco]">
-	  <img src="http://www.solidarityinc.com/images/stucco_home.jpg" class="homethumb" alt="Stucco Homes - Problems and Solutions"
-	  title="Stucco Homes - Problems and Solutions" /></a><br />
-	  <a href="images/stucco/1.jpg" rel="lightbox[stucco]">Stucco Homes - Problems and Solutions</a><br />
-	  <a href="images/stucco/1.jpg" rel="lightbox[stucco]">1</a>
-	  <a href="images/stucco/2.jpg" rel="lightbox[stucco]">2</a>
-	  <a href="images/stucco/3.jpg" rel="lightbox[stucco]">3</a>
-	  <a href="images/stucco/4.jpg" rel="lightbox[stucco]">4</a>
-	  <a href="images/stucco/5.jpg" rel="lightbox[stucco]">5</a>
-	  <a href="images/stucco/6.jpg" rel="lightbox[stucco]">6</a>
-	  <a href="images/stucco/7.jpg" rel="lightbox[stucco]">7</a><br />
-	  <a href="services_stucco.php">Also see Stucco/Restoration, Painting and Waterproofing</a>
+	  <a href="http://www.solidarityinc.com/images/stucco/1.jpg" rel="lightbox[stucco]">
+	  <img src="http://www.Delewinc.com/"images/stucco_home.jpg" class="homethumb" alt="Stucco Homes - Problems and Solutions" title="Stucco Homes - Problems and Solutions" /></a><br />
+	  <a href="http://www.solidarityinc.com/images/stucco/1.jpg" rel="lightbox[stucco]">Stucco Homes - Problems and Solutions</a><br />
+	  <a href="http://www.solidarityinc.com/images/stucco/1.jpg" rel="lightbox[stucco]">1</a>
+	  <a href="http://www.solidarityinc.com/images/stucco/2.jpg" rel="lightbox[stucco]">2</a>
+	  <a href="http://www.solidarityinc.com/images/stucco/3.jpg" rel="lightbox[stucco]">3</a>
+	  <a href="http://www.solidarityinc.com/images/stucco/4.jpg" rel="lightbox[stucco]">4</a>
+	  <a href="http://www.solidarityinc.com/images/stucco/5.jpg" rel="lightbox[stucco]">5</a>
+	  <a href="http://www.solidarityinc.com/images/stucco/6.jpg" rel="lightbox[stucco]">6</a>
+	  <a href="http://www.solidarityinc.com/images/stucco/7.jpg" rel="lightbox[stucco]">7</a><br />
+	  <a href="http://www.solidarityinc.com/services_stucco.php">Also see Stucco/Restoration, Painting and Waterproofing</a>
 	  </p -->
     </div>
     <div class="clr">
     </div>
   </div>
-</div><a href="#" class="nav-trigger"><span></span><span></span><span></span></a>
+</div>
 <div id="footer">
-    <div id="botNav">
-
     
-</div>
   <div id="copyright">
-    <a href="#top"><img class="top" src="images/top.gif" alt="top of page"></a>All 
-    Rights Reserved © Delew Painting, LIC. #586555 — Site by
-    <a href="http://www.nolenfelten.com/">Nolen Felten</a></div>
+    All Rights Reserved Delew Painting, Site by
+    <a href="http://www.solidarityinc.com/http://www.nolenfelten.com/">Nolen Felten</a></div>
 </div>
 
-<script type="text/javascript">if(!NREUMQ.f){NREUMQ.f=function(){NREUMQ.push(["load",new Date().getTime()]);var e=document.createElement("script");e.type="text/javascript";e.src=(("http:"===document.location.protocol)?"http:":"https:")+"//"+"js-agent.newrelic.com/nr-100.js";document.body.appendChild(e);if(NREUMQ.a)NREUMQ.a();};NREUMQ.a=window.onload;window.onload=NREUMQ.f;};NREUMQ.push(["nrfj","bam.nr-data.net","d225d35dfd","1747757","MVdXYUYFCxIEVUJQVggdYEddSwwPAVNOF0kOQg==",0,0,new Date().getTime(),"","","","",""]);</script>
+</body>
 
-<script type="text/javascript" src="http://js-agent.newrelic.com/nr-100.js"></script><div id="overlay" style="visibility: hidden; opacity: 0;"></div><div id="lightbox" style="display: none;"><div id="outerImageContainer"><div id="imageContainer"><img id="lightboxImage" style="visibility: hidden; opacity: 0;"><div id="hoverNav" style="visibility: hidden; opacity: 0;"><a id="prevLink" href="#"></a><a id="nextLink" href="#"></a></div><div id="loading"><a id="loadingLink" href="#"><img src="http://www.solidarityinc.com/images/loading.gif"></a></div></div></div><div id="imageDataContainer" class="clearfix" style="visibility: hidden; opacity: 0;"><div id="imageData"><div id="imageDetails"><span id="caption"></span><span id="numberDisplay"></span></div><div id="bottomNav"><a id="bottomNavClose" href="#"><img src="http://www.solidarityinc.com/images/closelabel.gif"></a></div></div></div></div></body></html>
+</html>
